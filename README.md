@@ -18,6 +18,7 @@ Vagrant config for php-csas development environment
         - Change directories to the place where you unzipped the git archive or cloned the repo using `cd`.
 - From inside the directory you cloned or unzipped, run `vagrant up` to start the virtual machine.
 - Once that finished, run `vagrant ssh` to get into the dev environment.
+- When it is up, on your local machine go to localhost:8000/info.php to see our PHP version being used by Apache.
 
 ## NOTE:
 - If you have already ran this vagrant image, then you need to run `vagrant up` as `vagrant up --provision` to remake the image.
