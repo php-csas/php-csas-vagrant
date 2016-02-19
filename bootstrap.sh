@@ -16,17 +16,19 @@ sudo apt-get install -y \
     libfreetype6-dev \
     libldap2-dev \
     libxslt-dev
-/usr/bib/wget -nv http://php.net/get/php-5.4.45.tar.gz/from/this/mirror -O php-5.4.45.tar.gz
+/usr/bin/wget -nv http://php.net/get/php-5.4.45.tar.gz/from/this/mirror -O php-5.4.45.tar.gz
 tar -xzvf php-5.4.45.tar.gz
 cd php-5.4.45
-/bin/echo "export PHPDIR=`pwd`" >> ~/.bashrc
-source ~/.bashrc
+export PHPDIR=`pwd`
+/bin/echo "export PHPDIR=`pwd`"  | sudo /usr/bin/tee --append /home/vagrant/.bashrc
+/bin/echo "alias build-php='cd $PHPDIR;$PHPDIR/configure --enable-debug --enable-maintainer-zts --prefix=$PHPDIR/php-install-directory --with-apxs2=/usr/bin/apxs'"  | sudo /usr/bin/tee --append /home/vagrant/.bashrc
 $PHPDIR/configure --enable-debug \
     --enable-maintainer-zts \
     --prefix=$PHPDIR/php-install-directory \
-    --with-apxs2=/usr/bin/apxs \
+    --with-apxs2=/usr/bin/apxs
 /usr/bin/make
 sudo /usr/bin/make install
 /bin/echo "AddType application/x-httpd-php  .php"  | sudo /usr/bin/tee --append /etc/apache2/apache2.conf
 sudo /etc/init.d/apache2 restart
-
+sudo /usr/bin/touch /var/www/html/info.php
+/bin/echo "<?php phpinfo(); ?>"  | sudo /usr/bin/tee --append /var/www/html/info.php
