@@ -24,5 +24,5 @@ Vagrant.configure(2) do |config|
   end
 
   # Setup the development environment on the machine
-  config.vm.provision "shell", path: "setup.sh"
+  config.vm.provision "shell", path: "bootstrap.sh"
 end
