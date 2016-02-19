@@ -22,3 +22,6 @@ Vagrant config for php-csas development environment
 
 ## NOTE:
 - If you have already ran this vagrant image, then you need to run `vagrant up` as `vagrant up --provision` to remake the image.
+
+## Useful commands:
+- Running `build-php` will build our PHP version. You still need to run `make` and `sudo make install` inside PHPHOME.
