@@ -34,3 +34,11 @@ export PATH=$PATH:$PHPDIR'/php-install-directory/bin/'
 sudo /etc/init.d/apache2 restart
 sudo /usr/bin/touch /var/www/html/info.php
 /bin/echo "<?php phpinfo(); ?>"  | sudo /usr/bin/tee --append /var/www/html/info.php
+
+git clone https://github.com/php-csas/php-csas.git ~/php-csas
+git clone https://github.com/php-csas/test-sites.git ~/test-sites
+git clone https://github.com/php-csas/php-csas-docs.git ~/php-csas-docs
+git clone https://github.com/php-csas/taint.git ~/taint
+git clone https://github.com/php-csas/ctemplate.git ~/ctemplate
+git clone https://github.com/php-csas/php-travis-ci-tests-example.git ~/php-travis-ci-tests-example
+https://github.com/php-csas/closure-templates.git ~/closure-templates
