@@ -40,7 +40,10 @@ git clone https://github.com/php-csas/php-csas-docs.git ~/php-csas-docs
 git clone https://github.com/php-csas/taint.git ~/taint
 git clone https://github.com/php-csas/ctemplate.git ~/ctemplate
 git clone https://github.com/php-csas/php-travis-ci-tests-example.git ~/php-travis-ci-tests-example
-https://github.com/php-csas/closure-templates.git ~/closure-templates
+git clone https://github.com/php-csas/closure-templates.git ~/closure-templates
 
 sudo mv ~/test-sites/test1/info.php /var/www/html
-sudo /etc/init.d/apache2 restart
+sh ~/php-csas/build_extension.sh
+
+/bin/echo "extension=csas.so"  | sudo /usr/bin/tee --append $PHPDIR/php-install-directory/lib/php.ini
+/bin/echo "csas.enable = 1"  | sudo /usr/bin/tee --append $PHPDIR/php-install-directory/lib/php.ini
