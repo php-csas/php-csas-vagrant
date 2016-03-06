@@ -15,7 +15,8 @@ sudo apt-get install -y \
     libicu-dev \
     libfreetype6-dev \
     libldap2-dev \
-    libxslt-dev
+    libxslt-dev \
+    autoconf
 /usr/bin/wget -nv http://php.net/get/php-5.4.45.tar.gz/from/this/mirror -O php-5.4.45.tar.gz
 tar -xzvf php-5.4.45.tar.gz
 cd php-5.4.45
