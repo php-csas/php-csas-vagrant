@@ -30,11 +30,9 @@ $PHPDIR/configure --enable-debug \
     --with-apxs2=/usr/bin/apxs
 /usr/bin/make
 sudo /usr/bin/make install
+sudo mv $PHPDIR/php.ini-Development $PHPDIR/php-install-directory/lib/php.ini 
 /bin/echo "AddType application/x-httpd-php  .php"  | sudo /usr/bin/tee --append /etc/apache2/apache2.conf
 export PATH=$PATH:$PHPDIR'/php-install-directory/bin/'
-sudo /etc/init.d/apache2 restart
-sudo /usr/bin/touch /var/www/html/info.php
-/bin/echo "<?php phpinfo(); ?>"  | sudo /usr/bin/tee --append /var/www/html/info.php
 
 git clone https://github.com/php-csas/php-csas.git ~/php-csas
 git clone https://github.com/php-csas/test-sites.git ~/test-sites
@@ -43,3 +41,6 @@ git clone https://github.com/php-csas/taint.git ~/taint
 git clone https://github.com/php-csas/ctemplate.git ~/ctemplate
 git clone https://github.com/php-csas/php-travis-ci-tests-example.git ~/php-travis-ci-tests-example
 https://github.com/php-csas/closure-templates.git ~/closure-templates
+
+sudo mv ~/test-sites/test1/info.php /var/www/html
+sudo /etc/init.d/apache2 restart
