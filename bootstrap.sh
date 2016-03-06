@@ -42,7 +42,7 @@ git clone https://github.com/php-csas/ctemplate.git ~/ctemplate
 git clone https://github.com/php-csas/php-travis-ci-tests-example.git ~/php-travis-ci-tests-example
 git clone https://github.com/php-csas/closure-templates.git ~/closure-templates
 
-sudo mv ~/test-sites/test1/info.php /var/www/html
+sudo cp -a ~/test-sites/test1/info.php /var/www/html
 cd ~/php-csas && sh ~/php-csas/build_extension.sh
 
 sudo /bin/sed -i "1828i extension=csas.so"  $PHPDIR/php-install-directory/lib/php.ini
