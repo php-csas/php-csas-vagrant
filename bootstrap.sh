@@ -30,7 +30,7 @@ $PHPDIR/configure --enable-debug \
     --with-apxs2=/usr/bin/apxs
 /usr/bin/make
 sudo /usr/bin/make install
-sudo mv $PHPDIR/php.ini-Development $PHPDIR/php-install-directory/lib/php.ini 
+sudo mv $PHPDIR/php.ini-development $PHPDIR/php-install-directory/lib/php.ini 
 /bin/echo "AddType application/x-httpd-php  .php"  | sudo /usr/bin/tee --append /etc/apache2/apache2.conf
 export PATH=$PATH:$PHPDIR'/php-install-directory/bin/'
 
