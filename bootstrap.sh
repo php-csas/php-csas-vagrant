@@ -35,12 +35,9 @@ sudo mv $PHPDIR/php.ini-development $PHPDIR/php-install-directory/lib/php.ini
 export PATH=$PATH:$PHPDIR'/php-install-directory/bin/'
 
 git clone https://github.com/php-csas/php-csas.git ~/php-csas
-git clone https://github.com/php-csas/test-sites.git ~/test-sites
-git clone https://github.com/php-csas/php-csas-docs.git ~/php-csas-docs
 git clone https://github.com/php-csas/taint.git ~/taint
 git clone https://github.com/php-csas/ctemplate.git ~/ctemplate
 git clone https://github.com/php-csas/php-travis-ci-tests-example.git ~/php-travis-ci-tests-example
-git clone https://github.com/php-csas/closure-templates.git ~/closure-templates
 
 sudo cp -a ~/test-sites/test1/info.php /var/www/html
 cd ~/php-csas && sh ~/php-csas/build_extension.sh
