@@ -65,3 +65,5 @@ Q5="CREATE TABLE post (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, text VARCHAR(
 SQL="${Q1}${Q2}${Q3}${Q4}${Q5}"
 
 $MYSQL -uroot -pcsas -e "$SQL"
+
+sudo service apache2 restart
