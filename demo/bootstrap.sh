@@ -39,8 +39,16 @@ git clone https://github.com/php-csas/taint.git ~/taint
 git clone https://github.com/php-csas/ctemplate.git ~/ctemplate
 git clone https://github.com/php-csas/php-travis-ci-tests-example.git ~/php-travis-ci-tests-example
 
-sudo cp -a ~/test-sites/test1/info.php /var/www/html
 cd ~/php-csas && sh ~/php-csas/build_extension.sh
 
 sudo /bin/sed -i "1828i extension=csas.so"  $PHPDIR/php-install-directory/lib/php.ini
 sudo /bin/sed -i "1830i csas.enable = 1"  $PHPDIR/php-install-directory/lib/php.ini
+
+sudo rm -rf /var/www/html
+sudo git clone https://github.com/php-csas/php-csas-demonstration /var/www/html
+
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password php-csas'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password php-csas'
+
+sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+sudo mysql_install_db
