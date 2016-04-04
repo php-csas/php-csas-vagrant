@@ -27,6 +27,8 @@ export PHPDIR=`pwd`
 $PHPDIR/configure --enable-debug \
     --enable-maintainer-zts \
     --prefix=$PHPDIR/php-install-directory \
+    --with-mysqli \
+    --with-mysql-sock=/var/run/mysqld/mysqld.sock \
     --with-apxs2=/usr/bin/apxs
 /usr/bin/make
 sudo /usr/bin/make install
