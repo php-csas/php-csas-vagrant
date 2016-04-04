@@ -26,9 +26,9 @@ export PHPDIR=`pwd`
 /bin/echo "alias build-php='cd $PHPDIR;$PHPDIR/configure --enable-debug --enable-maintainer-zts --prefix=$PHPDIR/php-install-directory --with-apxs2=/usr/bin/apxs'"  | sudo /usr/bin/tee --append /home/vagrant/.bashrc
 $PHPDIR/configure --enable-debug \
     --enable-maintainer-zts \
+    --prefix=$PHPDIR/php-install-directory \
     --with-mysqli \
     --with-mysql-sock=/var/run/mysqld/mysqld.sock \
-    --prefix=$PHPDIR/php-install-directory \
     --with-apxs2=/usr/bin/apxs
 /usr/bin/make
 sudo /usr/bin/make install
