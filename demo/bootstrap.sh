@@ -49,8 +49,19 @@ sudo /bin/sed -i "1830i csas.enable = 1"  $PHPDIR/php-install-directory/lib/php.
 sudo rm -rf /var/www/html
 sudo git clone https://github.com/php-csas/php-csas-demonstration /var/www/html
 
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password php-csas'
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password php-csas'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password csas'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password csas'
 
-sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+sudo apt-get -y install mysql-server libapache2-mod-auth-mysql php5-mysql
 sudo mysql_install_db
+
+MYSQL=`which mysql`
+ 
+Q1="CREATE DATABASE IF NOT EXISTS csas;"
+Q2="GRANT ALL ON *.* TO 'root'@'localhost' IDENTIFIED BY 'csas';"
+Q3="FLUSH PRIVILEGES;"
+Q4="USE csas;"
+Q5="CREATE TABLE post (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, text VARCHAR(1000), link VARCHAR(500), date TIMESTAMP);"
+SQL="${Q1}${Q2}${Q3}${Q4}${Q5}"
+
+$MYSQL -uroot -pcsas -e "$SQL"
