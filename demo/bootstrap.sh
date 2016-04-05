@@ -77,8 +77,6 @@ echo "[xhprof]" >> $PHPDIR/php-install-directory/lib/php.ini
 echo "extension=xhprof.so" >> $PHPDIR/php-install-directory/lib/php.ini
 echo "auto_prepend_file $PHPDIR/php-install-directory/lib/php/header.php" >> $PHPDIR/php-install-directory/lib/php.ini
 echo "auto_append_file $PHPDIR/php-install-directory/lib/php/footer.php" >> $PHPDIR/php-install-directory/lib/php.ini
-
-sudo service apache2 restart
 sudo rm -rf /var/www/html
 #create link between lib/php and var/www/xhprof
 sudo ln -s $PHPDIR/php-install-directory/lib/php /var/www/xhprof
@@ -105,3 +103,4 @@ Q5="CREATE TABLE post (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, text VARCHAR(
 SQL="${Q1}${Q2}${Q3}${Q4}${Q5}"
 
 $MYSQL -uroot -pcsas -e "$SQL"
+sudo service apache2 restart

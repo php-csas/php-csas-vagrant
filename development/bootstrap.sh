@@ -46,3 +46,5 @@ cd ~/php-csas && sh ~/php-csas/build_extension.sh
 
 sudo /bin/sed -i "1828i extension=csas.so"  $PHPDIR/php-install-directory/lib/php.ini
 sudo /bin/sed -i "1830i csas.enable = 1"  $PHPDIR/php-install-directory/lib/php.ini
+
+sudo service apache2 restart
