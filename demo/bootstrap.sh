@@ -82,7 +82,7 @@ sudo rm -rf /var/www/html
 sudo ln -s $PHPDIR/php-install-directory/lib/php /var/www/xhprof
 
 #clone the demonstration
-sudo git clone https://github.com/php-csas/php-csas-demonstration /var/www/html
+sudo git clone https://github.com/php-csas/demo-site /var/www/html
 
 git clone https://github.com/perftools/xhgui.git /var/www
 sudo $PHPDIR/php-install-directory/bin/php /var/www/xhgui/install.php
