@@ -73,7 +73,7 @@ sudo chmod 777 xdebug
 #create link between lib/php and var/www/xhprof
 
 #clone the demonstration
-sudo git clone https://github.com/php-csas/php-csas-demonstration /var/www/html
+sudo git clone https://github.com/php-csas/demo-site /var/www/html
 
 git clone https://github.com/perftools/xhgui.git /var/www
 sudo $PHPDIR/php-install-directory/bin/php /var/www/xhgui/install.php
@@ -102,7 +102,7 @@ Q1="CREATE DATABASE IF NOT EXISTS csas;"
 Q2="GRANT ALL ON *.* TO 'root'@'localhost' IDENTIFIED BY 'csas';"
 Q3="FLUSH PRIVILEGES;"
 Q4="USE csas;"
-Q5="CREATE TABLE post (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, text VARCHAR(1000), link VARCHAR(500), date TIMESTAMP);"
+Q5="CREATE TABLE post (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, text VARCHAR(1000), link VARCHAR(500), name VARCHAR(500), date TIMESTAMP);"
 SQL="${Q1}${Q2}${Q3}${Q4}${Q5}"
 
 $MYSQL -uroot -pcsas -e "$SQL"
