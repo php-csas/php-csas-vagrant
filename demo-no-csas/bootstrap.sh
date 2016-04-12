@@ -52,7 +52,7 @@ git clone https://github.com/php-csas/php-csas.git ~/php-csas
 cd ~/php-csas && sh ~/php-csas/build_extension.sh
 #modify the php.ini file
 sudo /bin/sed -i "1828i extension=csas.so"  $PHPDIR/php-install-directory/lib/php.ini
-sudo /bin/sed -i "1830i csas.enable = 1"  $PHPDIR/php-install-directory/lib/php.ini
+sudo /bin/sed -i "1830i csas.enable = 0"  $PHPDIR/php-install-directory/lib/php.ini
 #add profiler extension
 echo 'zend_extension = "/home/vagrant/php-5.4.45/php-install-directory/lib/php/extensions/debug-zts-20100525/xdebug.so"' >> $PHPDIR/php-install-directory/lib/php.ini
 echo 'xdebug.profiler_enable = 1' >> $PHPDIR/php-install-directory/lib/php.ini
