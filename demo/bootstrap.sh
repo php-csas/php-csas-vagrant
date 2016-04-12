@@ -40,7 +40,7 @@ sudo mv $PHPDIR/php.ini-development $PHPDIR/php-install-directory/lib/php.ini
 /bin/echo "AddType application/x-httpd-php  .php"  | sudo /usr/bin/tee --append /etc/apache2/apache2.conf
 export PATH=$PATH:$PHPDIR'/php-install-directory/bin/'
 
-sudo /usr/bin/wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/webgrind/webgrind-release-1.0.zip
+sudo /usr/bin/wget https://github.com/michaelschiller/webgrind/archive/master.zip
 #set php ini locatation
 sudo $PHPDIR/php-install-directory/bin/pecl config-set php_ini $PHPDIR/php-install-directory/lib/php.ini
 #install xdebug profiler
@@ -48,9 +48,6 @@ sudo $PHPDIR/php-install-directory/bin/pecl install xdebug
 
 #install other directories
 git clone https://github.com/php-csas/php-csas.git ~/php-csas
-git clone https://github.com/php-csas/taint.git ~/taint
-git clone https://github.com/php-csas/ctemplate.git ~/ctemplate
-git clone https://github.com/php-csas/php-travis-ci-tests-example.git ~/php-travis-ci-tests-example
 
 #create profiler output directory
 cd ~/php-csas && sh ~/php-csas/build_extension.sh
@@ -82,20 +79,15 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password csas'
 
 #install webgrind
-sudo unzip webgrind-release-1.0.zip -d /var/www/html
-sudo rm webgrind-release-1.0.zip
+sudo unzip master.zip -d /var/www/html
+sudo mv /var/www/html/webgrind-master /var/www/html/webgrind
+sudo rm master.zip
 sudo /bin/sed -i "s|storageDir = ''|storageDir = '/home/vagrant/prof_out'|" /var/www/html/webgrind/config.php
-/usr/bin/wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/webgrind/webgrind-release-1.0.zip
 
 #install sql
 sudo apt-get -y install mysql-server libapache2-mod-auth-mysql php5-mysql
 sudo mysql_install_db
 
-#install webgrind
-sudo unzip webgrind-release-1.0.zip -d /var/www/html
-sudo rm webgrind-release-1.0.zip
-sudo /bin/sed -i "s|storageDir = ''|storageDir = '/home/vagrant/prof_out'|" /var/www/html/webgrind/config.php
-/usr/bin/wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/webgrind/webgrind-release-1.0.zip
 MYSQL=`which mysql`
 
 Q1="CREATE DATABASE IF NOT EXISTS csas;"
